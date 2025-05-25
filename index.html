@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Java Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="calculator">
+    <form action="./Calculator" method="post" onsubmit="return prepareForm()">
+      <input type="text" id="display" class="display" disabled style="width: 300px">
+
+      <!-- Hidden inputs -->
+      <input type="hidden" name="num1" id="num1">
+      <input type="hidden" name="num2" id="num2">
+      <input type="hidden" name="operation" id="operation">
+
+      <div class="buttons">
+        <button type="button" onclick="append('7')">7</button>
+        <button type="button" onclick="append('8')">8</button>
+        <button type="button" onclick="append('9')">9</button>
+        <button type="button" onclick="setOperation('divide')">÷</button>
+
+        <button type="button" onclick="append('4')">4</button>
+        <button type="button" onclick="append('5')">5</button>
+        <button type="button" onclick="append('6')">6</button>
+        <button type="button" onclick="setOperation('multiply')">×</button>
+
+        <button type="button" onclick="append('1')">1</button>
+        <button type="button" onclick="append('2')">2</button>
+        <button type="button" onclick="append('3')">3</button>
+        <button type="button" onclick="setOperation('subtract')">−</button>
+
+        <button type="button" onclick="append('0')">0</button>
+        <button type="button" onclick="append('.')">.</button>
+        <button type="button" onclick="clearDisplay()">C</button>
+        <button type="button" onclick="setOperation('add')">+</button>
+
+        <button type="submit" class="equal">=</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Display result from URL if available
+    const params = new URLSearchParams(window.location.search);
+    const result = params.get("result");
+    if (result) {
+      document.getElementById("display").value = result;
+    }
+  </script>
+</body>
+</html>
